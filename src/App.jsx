@@ -2,37 +2,26 @@ import { useEffect, useState } from "react";
 import Cabecera from "./components/Cabecera";
 import Navegacion from "./components/Navegacion";
 import Cartelera from "./pages/Cartelera";
+import MisInscripciones from "./pages/MisInscripciones";
 import PiePagina from "./components/PiePagina";
 import { actividades } from "./data/actividades";
 
 function App() {
   const [categoria, setCategoria] = useState("Todas");
 
-  const visibles = categoria === "Todas"
-    ? actividades
-    : actividades.filter((actividad) => actividad.categoria === categoria);
-
-  function inscribirTemporal(actividad) {
-    console.log("Actividad seleccionada:", actividad.nombre);
-  }
-
   const [inscripciones, setInscripciones] = useState(() => {
     const guardadas = localStorage.getItem("inscripciones");
     return guardadas ? JSON.parse(guardadas) : [];
   });
 
-  useEffect(() => {
-    localStorage.setItem(
-      "inscripciones",
-      JSON.stringify(inscripciones)
-    );
-  }, [inscripciones]);
+  const visibles =
+    categoria === "Todas"
+      ? actividades
+      : actividades.filter((actividad) => actividad.categoria === categoria);
 
   function inscribir(actividad) {
     const yaExiste = inscripciones.some((item) => item.id === actividad.id);
-
     if (yaExiste) return;
-
     setInscripciones([...inscripciones, actividad]);
   }
 
@@ -41,6 +30,13 @@ function App() {
       inscripciones.filter((item) => item.id !== id)
     );
   }
+
+  useEffect(() => {
+    localStorage.setItem(
+      "inscripciones",
+      JSON.stringify(inscripciones)
+    );
+  }, [inscripciones]);
 
 
   return (
@@ -56,12 +52,18 @@ function App() {
           <option>Todas</option>
           <option>Música</option>
           <option>Artes visuales</option>
+          <option>Informatica</option>
+          <option>Deportes</option>
         </select>
         <Cartelera
           actividades={visibles}
           onInscribir={inscribir}
         />
-
+        <hr></hr>
+        <MisInscripciones
+          actividades={inscripciones}
+          onEliminar={eliminarInscripcion}
+        />
       </main>
       <PiePagina />
     </>
