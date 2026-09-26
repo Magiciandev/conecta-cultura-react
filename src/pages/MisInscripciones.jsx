@@ -1,4 +1,4 @@
-import Inscripciones from "../components/Inscripcion";
+import Inscripcion from "../components/Inscripcion";
 
 function MisInscripciones({ inscripciones, onEliminar }) {
   return (

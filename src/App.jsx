@@ -60,8 +60,11 @@ function App() {
           onInscribir={inscribir}
         />
         <hr></hr>
+        {inscripciones.length > 0 && (
+          <h2 className="h4 mb-3">Mis talleres inscritos</h2>
+        )}
         <MisInscripciones
-          actividades={inscripciones}
+          inscripciones={inscripciones}
           onEliminar={eliminarInscripcion}
         />
       </main>
