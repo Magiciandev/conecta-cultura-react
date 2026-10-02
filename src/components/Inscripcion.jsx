@@ -5,7 +5,7 @@ function Inscripcion({ inscripcion, onEliminar }) {
         <h2 className="h5">{inscripcion.nombre}</h2>
         <p>{inscripcion.categoria}</p>
         <button
-          className="btn btn-primary"
+          className="btn btn-danger"
           onClick={() => onEliminar(inscripcion.id)}
         >
           Eliminar

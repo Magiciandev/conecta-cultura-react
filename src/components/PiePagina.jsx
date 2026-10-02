@@ -1,17 +1,11 @@
-import { Container, Row, Col } from 'react-bootstrap';function PiePagina() {
-
-    return (
-        <footer className="bg-dark py-4 mt-auto text-white">
-            <Container>
-                <Row>
-                    <Col className="text-centerc">
-                        <p className="mb-0">© 2026 Conecta Cultura. Todos los derechos reservados.</p>
-                    </Col>
-                </Row>
-            </Container>
-        </footer>
-    );
-
+function PiePagina() {
+  return (
+    <footer className="py-4 bg-dark text-white">
+        <p><strong>Conecta Cultura</strong></p>
+        <address>Contacto: <a href="mailto:hola@conectacultura.cl">hola@conectacultura.cl</a></address>
+        <p><small>Proyecto académico · Desarrollo FullStack II</small></p>
+    </footer>
+  );
 }
 
 export default PiePagina;
