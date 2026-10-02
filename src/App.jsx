@@ -57,29 +57,6 @@ function App() {
       <Route path="/admin/actividades" element={<AdminActividades />} />
       <Route path="*" element={<NoEncontrada />} />
       </Routes>
-
-      <main className="container py-4">
-        <select
-          className="form-select mb-4"
-          value={categoria}
-          onChange={(evento) => setCategoria(evento.target.value)}
-        >
-          <option>Todas</option>
-          <option>Música</option>
-          <option>Artes visuales</option>
-          <option>Informática</option>
-          <option>Deportes</option>
-        </select>
-        <Cartelera
-          actividades={visibles}
-          onInscribir={inscribir}
-        />
-        <hr></hr>
-        <MisInscripciones
-          inscripciones={inscripciones}
-          onEliminar={eliminarInscripcion}
-        />
-      </main>
     </>
   );
 }
